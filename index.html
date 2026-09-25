@@ -145,6 +145,59 @@
             color: var(--primary);
         }
 
+        /* Formulaire stylisé pour les clients existants */
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-group input {
+            padding: 14px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            outline: none;
+            background: #FFF;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-top: 4px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-weight: 400;
+            color: var(--text-main);
+        }
+
         /* Grille des créneaux horaires */
         .slots-grid {
             display: grid;
@@ -287,14 +340,49 @@
                     <div class="card-action">Commencer →</div>
                 </div>
 
-                <div class="interactive-card" onclick="selectClientType('Client existant')">
+                <div class="interactive-card" onclick="showExistingClientForm()">
                     <div class="card-details">
                         <h3>Je suis un client existant</h3>
-                        <p>Réserver une séance (libre choix du soin) avec mon profil.</p>
+                        <p>Retrouver mon dossier et choisir mon soin.</p>
                     </div>
-                    <div class="card-action">Continuer →</div>
+                    <div class="card-action">Se connecter →</div>
                 </div>
             </div>
+        </div>
+
+        <!-- ÉTAPE 0.5 : Formulaire de vérification Client Existant (Inspiré de GoRendezVous) -->
+        <div id="step-existing-auth" class="step-hidden">
+            <button class="back-btn" onclick="goToStep0()">← Retour</button>
+            <div class="section-title">Vérification de votre dossier</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">
+                Cette étape protège vos renseignements personnels et permet de personnaliser vos options de réservation.
+            </p>
+            
+            <div class="auth-form">
+                <div class="form-group">
+                    <label>Prénom</label>
+                    <input type="text" id="auth-firstname" placeholder="Ex. Marie">
+                </div>
+                <div class="form-group">
+                    <label>Nom de famille</label>
+                    <input type="text" id="auth-lastname" placeholder="Ex. Tremblay">
+                </div>
+                <div class="form-group">
+                    <label>Recevoir le code par</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="contact-method" checked> Courriel</label>
+                        <label><input type="radio" name="contact-method"> Texto</label>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 6px;">
+                    <label>Courriel (comme inscrit à votre dossier)</label>
+                    <input type="email" id="auth-email" placeholder="votre@courriel.com">
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="submitExistingClientAuth()">
+                Recevoir mon code →
+            </button>
         </div>
 
         <!-- ÉTAPE 1 : Choix du soin -->
@@ -394,7 +482,7 @@
             </div>
 
             <button class="cta-button" onclick="window.open('https://www.gorendezvous.com/stessydesir', '_blank')">
-                Se connecter et confirmer sur l'agenda →
+                Confirmer sur l'agenda sécurisé →
             </button>
         </div>
 
@@ -412,8 +500,24 @@
 
         function selectClientType(type) {
             clientType = type;
-            // Que ce soit nouveau ou ancien client, on passe à l'étape du choix du soin (liberté totale)
             document.getElementById('step-client-type').classList.add('step-hidden');
+            document.getElementById('step-service').classList.remove('step-hidden');
+        }
+
+        function showExistingClientForm() {
+            clientType = 'Client existant';
+            document.getElementById('step-client-type').classList.add('step-hidden');
+            document.getElementById('step-existing-auth').classList.remove('step-hidden');
+        }
+
+        function submitExistingClientAuth() {
+            const firstname = document.getElementById('auth-firstname').value;
+            if(!firstname) {
+                alert('Veuillez entrer votre prénom pour continuer.');
+                return;
+            }
+            // Une fois identifié, on l'envoie vers le choix du soin (avec liberté totale)
+            document.getElementById('step-existing-auth').classList.add('step-hidden');
             document.getElementById('step-service').classList.remove('step-hidden');
         }
 
@@ -441,6 +545,7 @@
         }
 
         function goToStep0() {
+            document.getElementById('step-existing-auth').classList.add('step-hidden');
             document.getElementById('step-service').classList.add('step-hidden');
             document.getElementById('step-client-type').classList.remove('step-hidden');
         }
