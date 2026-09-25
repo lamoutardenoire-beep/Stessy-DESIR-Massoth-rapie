@@ -7,15 +7,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2C4A3E; /* Vert sapin profond et apaisant */
-            --primary-hover: #1E332B;
-            --accent: #C5A059; /* Or/Bois chaleureux pour le luxe discret */
-            --bg-color: #F4F1EA; /* Lin / Blanc cassé cocooning */
+            --primary: #1F382E;
+            --accent: #C5A059;
+            --bg-color: #FAFAF9;
             --card-bg: #FFFFFF;
-            --text-main: #2C3E35;
-            --text-muted: #6B7C73;
-            --border-color: #E6E1DA;
-            --border-radius: 16px;
+            --text-main: #1A2E26;
+            --text-muted: #64748B;
+            --border-color: #E2E8F0;
+            --border-radius: 14px;
         }
 
         * {
@@ -29,120 +28,99 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 40px 20px;
+            padding: 50px 20px;
         }
 
         .booking-container {
-            max-width: 820px;
+            max-width: 740px;
             margin: 0 auto;
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            box-shadow: 0 20px 50px rgba(44, 74, 62, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border-color);
             overflow: hidden;
-            border: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 45px 40px;
         }
 
-        /* En-tête Immersif (Style Clinique US/AUS) */
-        .clinic-hero-banner {
-            background: linear-gradient(rgba(44, 74, 62, 0.85), rgba(44, 74, 62, 0.9)), url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-            color: white;
-            padding: 40px 30px;
-            text-align: center;
+        /* En-tête épuré et chic */
+        .clinic-header {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .clinic-avatar {
-            width: 85px;
-            height: 85px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--accent);
-            margin: 0 auto 15px auto;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            display: block;
+            border: 2px solid var(--accent);
+            flex-shrink: 0;
         }
 
         .clinic-info h1 {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 700;
-            margin-bottom: 6px;
+            color: var(--primary);
+            margin-bottom: 4px;
             letter-spacing: -0.01em;
         }
 
         .clinic-info p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin-bottom: 12px;
-            font-weight: 300;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 400;
         }
 
         .google-reviews-link {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(8px);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: white;
+            font-size: 0.82rem;
+            color: var(--primary);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
+            background: #F1F5F2;
+            padding: 4px 12px;
+            border-radius: 20px;
             transition: background 0.2s;
         }
 
         .google-reviews-link:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: #E2ECE7;
         }
 
-        /* Corps de sélection */
-        .step-section {
-            padding: 40px 35px;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .step-number {
-            background: var(--accent);
-            color: white;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: 700;
-        }
-
-        .step-title {
-            font-size: 1.15rem;
+        /* Section titres et étapes */
+        .section-title {
+            font-size: 0.95rem;
             font-weight: 600;
-            color: var(--primary);
-            letter-spacing: -0.01em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
         }
 
-        /* Liste des services type "Carte de soin" */
+        /* Liste des services */
         .services-list {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-bottom: 40px;
+            gap: 12px;
+            margin-bottom: 35px;
         }
 
         .service-option {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 22px 24px;
-            border: 2px solid var(--border-color);
+            padding: 18px 22px;
+            border: 1px solid var(--border-color);
             border-radius: 12px;
             cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.2s ease;
             background: #FFF;
             text-decoration: none;
             color: inherit;
@@ -150,27 +128,26 @@
 
         .service-option:hover {
             border-color: var(--primary);
-            background: #FAFCFA;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(44, 74, 62, 0.07);
+            background: #FBFBFA;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
         }
 
         .service-details h3 {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--text-main);
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .service-details p {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
             font-weight: 300;
         }
 
         .service-meta {
-            text-align: right;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--primary);
             white-space: nowrap;
@@ -179,11 +156,11 @@
             gap: 6px;
         }
 
-        /* Grille des lieux */
+        /* Cabinets grid */
         .locations-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 12px;
         }
 
         @media (max-width: 600px) {
@@ -193,31 +170,31 @@
         }
 
         .location-option {
-            padding: 20px;
+            padding: 16px 18px;
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            background: #FAF8F5;
+            border-radius: 10px;
+            background: #FAFAFA;
         }
 
         .location-option h4 {
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             color: var(--primary);
         }
 
         .location-option p {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: var(--text-muted);
         }
 
-        /* Footer discret réassurance */
+        /* Footer */
         .page-footer {
             text-align: center;
-            padding: 20px;
-            background: #FAF8F5;
+            margin-top: 35px;
+            padding-top: 20px;
             border-top: 1px solid var(--border-color);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: var(--text-muted);
         }
     </style>
@@ -225,66 +202,72 @@
 <body>
 
     <div class="booking-container">
-        <!-- En-tête Immersif avec bannière et avatar -->
-        <div class="clinic-hero-banner">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Stessy Desir" class="clinic-avatar">
+        <!-- En-tête épuré et haut de gamme -->
+        <div class="clinic-header">
+            <img src="stessy.png" alt="Stessy DESIR" class="clinic-avatar">
             <div class="clinic-info">
                 <h1>Stessy DESIR Massothérapie</h1>
                 <p>Beloeil & Saint-Hyacinthe, QC</p>
                 <a href="https://www.google.com/maps/place/Stessy+DESIR+Massothérapie/@45.6211627,-72.9482494,16z/data=!4m6!3m5!1s0x4cc84f063d0a06fd:0x521c1890929fbb7e!8m2!3d45.6230949!4d-72.9473804!16s%2Fg%2F11nr7v356f?hl=fr-CA&entry=ttu" target="_blank" class="google-reviews-link">
-                    ⭐ 5.0 / 5 (Voir les avis Google vérifiés)
+                    ⭐ 5.0 / 5 (Avis Google vérifiés)
                 </a>
             </div>
         </div>
 
-        <div class="step-section">
-            <!-- Étape 1 -->
-            <div class="section-header">
-                <span class="step-number">1</span>
-                <h2 class="step-title">Choisissez votre soin pour réserver</h2>
-            </div>
-            
-            <div class="services-list">
-                <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="service-option">
-                    <div class="service-details">
-                        <h3>Massage Thérapeutique / Deep Tissue</h3>
-                        <p>Cible les tensions chroniques et les nœuds musculaires profonds.</p>
-                    </div>
-                    <div class="service-meta">Réserver <span>→</span></div>
-                </a>
-
-                <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="service-option">
-                    <div class="service-details">
-                        <h3>Massage Suédois & Détente</h3>
-                        <p>Lâcher-prise global, déconnexion du système nerveux et apaisement.</p>
-                    </div>
-                    <div class="service-meta">Réserver <span>→</span></div>
-                </a>
-
-                <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="service-option">
-                    <div class="service-details">
-                        <h3>Massage Prénatal & Sportif</h3>
-                        <p>Accompagnement adapté pour soulager les zones de charges spécifiques.</p>
-                    </div>
-                    <div class="service-meta">Réserver <span>→</span></div>
-                </a>
-            </div>
-
-            <!-- Étape 2 -->
-            <div class="section-header">
-                <span class="step-number">2</span>
-                <h2 class="step-title">Nos cabinets disponibles</h2>
-            </div>
-            
-            <div class="locations-grid">
-                <div class="location-option">
-                    <h4>📍 Cabinet Beloeil</h4>
-                    <p>210 Rue Brébeuf</p>
+        <!-- Étape 1 : Services exacts -->
+        <div class="section-title">1. Choisissez votre soin</div>
+        <div class="services-list">
+            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="service-option">
+                <div class="service-details">
+                    <h3>Massage Thérapeutique</h3>
+                    <p>Soulagement des douleurs musculaires et articulaires ciblées.</p>
                 </div>
-                <div class="location-option">
-                    <h4>📍 Cabinet Saint-Hyacinthe</h4>
-                    <p>460 Av. Saint-Joseph</p>
+                <div class="service-meta">Réserver <span>→</span></div>
+            </a>
+
+            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="service-option">
+                <div class="service-details">
+                    <h3>Massage Suédois</h3>
+                    <p>Détente globale, déconnexion du système nerveux et lâcher-prise.</p>
                 </div>
+                <div class="service-meta">Réserver <span>→</span></div>
+            </a>
+
+            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="service-option">
+                <div class="service-details">
+                    <h3>Deep Tissue</h3>
+                    <p>Travail en profondeur sur les tensions chroniques et les nœuds.</p>
+                </div>
+                <div class="service-meta">Réserver <span>→</span></div>
+            </a>
+
+            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="service-option">
+                <div class="service-details">
+                    <h3>Massage Sportif</h3>
+                    <p>Optimisation de la récupération et préparation physique.</p>
+                </div>
+                <div class="service-meta">Réserver <span>→</span></div>
+            </a>
+
+            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="service-option">
+                <div class="service-details">
+                    <h3>Massage Prénatal</h3>
+                    <p>Accompagnement tout en douceur adapté aux besoins de la grossesse.</p>
+                </div>
+                <div class="service-meta">Réserver <span>→</span></div>
+            </a>
+        </div>
+
+        <!-- Étape 2 : Lieux -->
+        <div class="section-title">2. Nos cabinets disponibles</div>
+        <div class="locations-grid">
+            <div class="location-option">
+                <h4>📍 Cabinet Beloeil</h4>
+                <p>210 Rue Brébeuf</p>
+            </div>
+            <div class="location-option">
+                <h4>📍 Cabinet Saint-Hyacinthe</h4>
+                <p>460 Av. Saint-Joseph</p>
             </div>
         </div>
 
