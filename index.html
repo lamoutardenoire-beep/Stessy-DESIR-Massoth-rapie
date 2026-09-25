@@ -41,7 +41,7 @@
             border: 1px solid #E2E8F0;
         }
 
-        /* Header de la clinique (Style US/AUS) */
+        /* En-tête de la clinique (Style US/AUS) */
         .clinic-header {
             padding: 30px;
             border-bottom: 1px solid #E2E8F0;
@@ -86,7 +86,7 @@
             text-decoration: underline;
         }
 
-        /* Corps de sélection (Flux interactif) */
+        /* Corps de sélection */
         .step-section {
             padding: 30px;
         }
@@ -113,7 +113,7 @@
             font-size: 0.75rem;
         }
 
-        /* Liste des services type US */
+        /* Liste des services cliquables (Direct vers GoRendezVous) */
         .services-list {
             display: flex;
             flex-direction: column;
@@ -131,11 +131,15 @@
             cursor: pointer;
             transition: all 0.2s ease;
             background: #FFF;
+            text-decoration: none;
+            color: inherit;
         }
 
-        .service-option:hover, .service-option.selected {
+        .service-option:hover {
             border-color: var(--primary);
             background: #F4F7F5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44, 74, 62, 0.05);
         }
 
         .service-details h3 {
@@ -155,6 +159,7 @@
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--primary);
+            white-space: nowrap;
         }
 
         /* Grille des lieux */
@@ -162,7 +167,6 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin-bottom: 30px;
         }
 
         @media (max-width: 600px) {
@@ -175,13 +179,7 @@
             padding: 16px;
             border: 2px solid #E2E8F0;
             border-radius: 10px;
-            cursor: pointer;
             background: #FFF;
-            transition: all 0.2s;
-        }
-
-        .location-option:hover {
-            border-color: var(--primary);
         }
 
         .location-option h4 {
@@ -195,32 +193,6 @@
             font-size: 0.75rem;
             color: var(--text-muted);
         }
-
-        /* Bouton de validation final */
-        .action-bar {
-            padding: 20px 30px;
-            background: #F8F9FA;
-            border-top: 1px solid #E2E8F0;
-            text-align: right;
-        }
-
-        .proceed-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: background 0.2s;
-        }
-
-        .proceed-btn:hover {
-            background-color: var(--primary-hover);
-        }
     </style>
 </head>
 <body>
@@ -228,7 +200,6 @@
     <div class="booking-container">
         <!-- En-tête profil & avis vérifiés -->
         <div class="clinic-header">
-            <!-- Remplacer par sa photo officielle -->
             <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Stessy Desir" class="clinic-avatar">
             <div class="clinic-info">
                 <h1>Stessy DESIR Massothérapie</h1>
@@ -241,37 +212,40 @@
         </div>
 
         <div class="step-section">
-            <!-- Étape 1 : Choix de la prestation (Standard US/AUS) -->
+            <!-- Étape 1 : Choix de la prestation (Chaque carte est un lien direct) -->
             <div class="step-title">
-                <span class="step-number">1</span> Sélectionnez votre soin
+                <span class="step-number">1</span> Choisissez votre soin pour réserver
             </div>
             <div class="services-list">
-                <div class="service-option selected">
+                <!-- Lien vers le GoRendezVous -->
+                <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="service-option">
                     <div class="service-details">
                         <h3>Massage Thérapeutique / Deep Tissue</h3>
                         <p>Cible les tensions chroniques et les nœuds musculaires profonds.</p>
                     </div>
-                    <div class="service-meta">Sur-mesure</div>
-                </div>
-                <div class="service-option">
+                    <div class="service-meta">Réserver →</div>
+                </a>
+
+                <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="service-option">
                     <div class="service-details">
                         <h3>Massage Suédois & Détente</h3>
                         <p>Lâcher-prise global, déconnexion du système nerveux et apaisement.</p>
                     </div>
-                    <div class="service-meta">Relaxant</div>
-                </div>
-                <div class="service-option">
+                    <div class="service-meta">Réserver →</div>
+                </a>
+
+                <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="service-option">
                     <div class="service-details">
                         <h3>Massage Prénatal & Sportif</h3>
                         <p>Accompagnement adapté pour soulager les zones de charges spécifiques.</p>
                     </div>
-                    <div class="service-meta">Spécifique</div>
-                </div>
+                    <div class="service-meta">Réserver →</div>
+                </a>
             </div>
 
-            <!-- Étape 2 : Choix du lieu -->
+            <!-- Étape 2 : Rappel des cabinets -->
             <div class="step-title">
-                <span class="step-number">2</span> Choisissez votre cabinet
+                <span class="step-number">2</span> Nos cabinets disponibles
             </div>
             <div class="locations-grid">
                 <div class="location-option">
@@ -283,13 +257,6 @@
                     <p>460 Av. Saint-Joseph</p>
                 </div>
             </div>
-        </div>
-
-        <!-- Barre d'action finale qui bascule vers l'agenda logistique -->
-        <div class="action-bar">
-            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="proceed-btn">
-                Continuer vers le choix de l'horaire →
-            </a>
         </div>
     </div>
 
