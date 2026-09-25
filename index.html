@@ -8,13 +8,14 @@
     <style>
         :root {
             --primary: #1F382E;
+            --primary-hover: #162820;
             --accent: #C5A059;
             --bg-color: #FAFAF9;
             --card-bg: #FFFFFF;
             --text-main: #1A2E26;
             --text-muted: #64748B;
             --border-color: #E2E8F0;
-            --border-radius: 14px;
+            --border-radius: 16px;
         }
 
         * {
@@ -28,7 +29,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 50px 20px;
+            padding: 60px 20px;
         }
 
         .booking-container {
@@ -36,10 +37,10 @@
             margin: 0 auto;
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
             border: 1px solid var(--border-color);
             overflow: hidden;
-            padding: 40px;
+            padding: 45px;
         }
 
         .step-hidden {
@@ -51,7 +52,7 @@
             display: flex;
             align-items: center;
             gap: 24px;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
             padding-bottom: 30px;
             border-bottom: 1px solid var(--border-color);
         }
@@ -70,6 +71,7 @@
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 4px;
+            letter-spacing: -0.01em;
         }
 
         .clinic-info p {
@@ -78,13 +80,23 @@
             margin-bottom: 8px;
         }
 
+        .google-reviews {
+            font-size: 0.82rem;
+            color: var(--primary);
+            font-weight: 600;
+            background: #F1F5F2;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
         .section-title {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 16px;
+            letter-spacing: 0.08em;
+            margin-bottom: 20px;
         }
 
         /* Options interactives */
@@ -92,18 +104,18 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin-bottom: 35px;
+            margin-bottom: 20px;
         }
 
         .interactive-card {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 22px;
+            padding: 20px 24px;
             border: 1px solid var(--border-color);
             border-radius: 12px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
             background: #FFF;
         }
 
@@ -111,19 +123,20 @@
             border-color: var(--primary);
             background: #FBFBFA;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 8px 20px rgba(31, 56, 46, 0.04);
         }
 
         .card-details h3 {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--text-main);
-            margin-bottom: 2px;
+            margin-bottom: 3px;
         }
 
         .card-details p {
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             color: var(--text-muted);
+            font-weight: 300;
         }
 
         .card-action {
@@ -132,35 +145,107 @@
             color: var(--primary);
         }
 
+        /* Grille des créneaux horaires */
+        .slots-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .slots-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .slot-card {
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            background: #FFF;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary);
+            transition: all 0.2s ease;
+        }
+
+        .slot-card:hover {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+
         .back-btn {
             background: none;
             border: none;
             color: var(--text-muted);
             font-size: 0.85rem;
             cursor: pointer;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
         }
 
         .back-btn:hover {
             color: var(--primary);
         }
 
-        /* Succès / Étape finale */
+        /* Étape finale */
         .success-box {
             text-align: center;
-            padding: 30px 20px;
+            padding: 20px 10px;
         }
 
         .success-box h2 {
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-size: 1.4rem;
         }
 
-        .success-box p {
+        .summary-card {
+            background: #F8F9F8;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .summary-item {
+            font-size: 0.9rem;
             color: var(--text-muted);
-            margin-bottom: 20px;
+            margin-bottom: 6px;
+        }
+
+        .summary-item span {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.2s, transform 0.2s;
+            box-shadow: 0 4px 12px rgba(31, 56, 46, 0.15);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -173,7 +258,7 @@
             <div class="clinic-info">
                 <h1>Stessy DESIR Massothérapie</h1>
                 <p>Beloeil & Saint-Hyacinthe, QC</p>
-                <span style="font-size: 0.82rem; color: var(--primary); font-weight: 600;">⭐ 5.0 / 5 (Avis Google vérifiés)</span>
+                <div class="google-reviews">⭐ 5.0 / 5 (Avis Google vérifiés)</div>
             </div>
         </div>
 
@@ -223,7 +308,7 @@
             </div>
         </div>
 
-        <!-- ÉTAPE 2 : Choix du cabinet (Caché par défaut) -->
+        <!-- ÉTAPE 2 : Choix du cabinet -->
         <div id="step-location" class="step-hidden">
             <button class="back-btn" onclick="goToStep1()">← Retour au choix du soin</button>
             <div class="section-title">2. Choisissez votre cabinet</div>
@@ -246,12 +331,34 @@
             </div>
         </div>
 
-        <!-- ÉTAPE 3 : Confirmation interactive (Caché par défaut) -->
+        <!-- ÉTAPE 3 : Choix de l'horaire (Calendrier simulé) -->
+        <div id="step-time" class="step-hidden">
+            <button class="back-btn" onclick="goToStep2()">← Retour au choix du lieu</button>
+            <div class="section-title">3. Choisissez un créneau disponible</div>
+            <div class="slots-grid">
+                <div class="slot-card" onclick="selectTime('Mardi prochain à 09:00')">Mardi 09:00</div>
+                <div class="slot-card" onclick="selectTime('Mardi prochain à 11:00')">Mardi 11:00</div>
+                <div class="slot-card" onclick="selectTime('Mardi prochain à 14:00')">Mardi 14:00</div>
+                <div class="slot-card" onclick="selectTime('Mercredi à 10:30')">Mercredi 10:30</div>
+                <div class="slot-card" onclick="selectTime('Mercredi à 13:00')">Mercredi 13:00</div>
+                <div class="slot-card" onclick="selectTime('Jeudi à 15:30')">Jeudi 15:30</div>
+            </div>
+        </div>
+
+        <!-- ÉTAPE 4 : Validation finale -->
         <div id="step-success" class="step-hidden success-box">
-            <button class="back-btn" onclick="goToStep2()">← Modifier la sélection</button>
-            <h2>🎉 Votre parcours est prêt !</h2>
-            <p id="summary-text" style="font-weight: 500; color: var(--text-main); margin-bottom: 25px;"></p>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">Ici, le client pourrait valider son créneau horaire en un clic sans friction.</p>
+            <button class="back-btn" onclick="goToStep3()">← Modifier l'horaire</button>
+            <h2>✨ Réservation presque terminée</h2>
+            
+            <div class="summary-card">
+                <div class="summary-item">Soin : <span id="summary-service"></span></div>
+                <div class="summary-item" style="margin-top: 6px;">Lieu : <span id="summary-location"></span></div>
+                <div class="summary-item" style="margin-top: 6px;">Créneau : <span id="summary-time"></span></div>
+            </div>
+
+            <button class="cta-button" onclick="alert('Ici, le système enregistre le rendez-vous ou bascule sur le paiement/confirmation final !')">
+                Confirmer ce rendez-vous →
+            </button>
         </div>
 
     </div>
@@ -259,6 +366,7 @@
     <script>
         let chosenService = "";
         let chosenLocation = "";
+        let chosenTime = "";
 
         function selectService(serviceName) {
             chosenService = serviceName;
@@ -269,11 +377,17 @@
         function selectLocation(locationName) {
             chosenLocation = locationName;
             document.getElementById('step-location').classList.add('step-hidden');
+            document.getElementById('step-time').classList.remove('step-hidden');
+        }
+
+        function selectTime(timeSlot) {
+            chosenTime = timeSlot;
+            document.getElementById('step-time').classList.add('step-hidden');
             document.getElementById('step-success').classList.remove('step-hidden');
             
-            document.getElementById('summary-text').innerHTML = 
-                `Soin sélectionné : <span style="color: var(--primary);">${chosenService}</span><br>` +
-                `Lieu : <span style="color: var(--primary);">${chosenLocation}</span>`;
+            document.getElementById('summary-service').innerText = chosenService;
+            document.getElementById('summary-location').innerText = chosenLocation;
+            document.getElementById('summary-time').innerText = chosenTime;
         }
 
         function goToStep1() {
@@ -282,8 +396,13 @@
         }
 
         function goToStep2() {
-            document.getElementById('step-success').classList.add('step-hidden');
+            document.getElementById('step-time').classList.add('step-hidden');
             document.getElementById('step-location').classList.remove('step-hidden');
+        }
+
+        function goToStep3() {
+            document.getElementById('step-success').classList.add('step-hidden');
+            document.getElementById('step-time').classList.remove('step-hidden');
         }
     </script>
 </body>
