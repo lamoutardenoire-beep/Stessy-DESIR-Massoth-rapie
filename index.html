@@ -96,10 +96,18 @@
             color: var(--primary);
             font-weight: 600;
             background: #F7F5F0;
-            padding: 4px 12px;
+            padding: 5px 12px;
             border-radius: 20px;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             border: 1px solid var(--border-color);
+        }
+
+        .google-reviews svg {
+            width: 14px;
+            height: 14px;
+            fill: #D4AF37;
         }
 
         .section-title {
@@ -143,6 +151,17 @@
             font-weight: 600;
             color: var(--text-main);
             margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-details h3 svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 2;
         }
 
         .card-details p {
@@ -162,11 +181,32 @@
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-action svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--primary);
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.2s;
+        }
+
+        .interactive-card:hover .card-action svg {
+            transform: translateX(3px);
         }
 
         /* Bouton pour ouvrir la modale de la carte */
         .view-menu-btn {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             width: 100%;
             text-align: center;
             background: #F7F5F0;
@@ -179,6 +219,14 @@
             cursor: pointer;
             margin-bottom: 20px;
             transition: background 0.2s;
+        }
+
+        .view-menu-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--primary);
+            fill: none;
+            stroke-width: 2;
         }
 
         .view-menu-btn:hover {
@@ -331,8 +379,22 @@
             transition: color 0.2s;
         }
 
+        .back-btn svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--text-muted);
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
         .back-btn:hover {
             color: var(--primary);
+        }
+
+        .back-btn:hover svg {
+            stroke: var(--primary);
         }
 
         /* Étape finale */
@@ -368,7 +430,10 @@
         }
 
         .cta-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             background-color: var(--primary);
             color: white;
             padding: 16px 32px;
@@ -381,6 +446,16 @@
             cursor: pointer;
             width: 100%;
             text-align: center;
+        }
+
+        .cta-button svg {
+            width: 16px;
+            height: 16px;
+            stroke: white;
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .cta-button:hover {
@@ -413,7 +488,10 @@
             <div class="clinic-info">
                 <h1>Stessy DESIR Massothérapie</h1>
                 <p>Beloeil & Saint-Hyacinthe, QC</p>
-                <div class="google-reviews">⭐ 5.0 / 5 (Avis Google vérifiés)</div>
+                <div class="google-reviews">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    5.0 / 5 (Avis Google vérifiés)
+                </div>
             </div>
         </div>
 
@@ -426,7 +504,10 @@
                         <h3>Je suis un nouveau client</h3>
                         <p>Créer mon profil et réserver une première séance.</p>
                     </div>
-                    <div class="card-action">Commencer →</div>
+                    <div class="card-action">
+                        Commencer
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
                 </div>
 
                 <div class="interactive-card" onclick="showExistingClientForm()">
@@ -434,14 +515,20 @@
                         <h3>Je suis un client existant</h3>
                         <p>Retrouver mon dossier et choisir mon soin.</p>
                     </div>
-                    <div class="card-action">Se connecter →</div>
+                    <div class="card-action">
+                        Se connecter
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- ÉTAPE 0.5A : Formulaire Client Existant -->
         <div id="step-existing-auth" class="step-hidden">
-            <button class="back-btn" onclick="goToStep0()">← Retour</button>
+            <button class="back-btn" onclick="goToStep0()">
+                <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Retour
+            </button>
             <div class="section-title">Vérification de votre dossier</div>
             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">
                 Cette étape protège vos renseignements personnels et permet de retrouver vos habitudes.
@@ -470,13 +557,17 @@
             </div>
 
             <button class="cta-button" onclick="submitExistingClientAuth()">
-                Recevoir mon code →
+                Recevoir mon code
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </button>
         </div>
 
         <!-- ÉTAPE 0.5B : Formulaire Nouveau Client -->
         <div id="step-new-auth" class="step-hidden">
-            <button class="back-btn" onclick="goToStep0()">← Retour</button>
+            <button class="back-btn" onclick="goToStep0()">
+                <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Retour
+            </button>
             <div class="section-title">Création de votre profil</div>
             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">
                 Entrez vos coordonnées pour préparer votre première visite et vos reçus d'assurance.
@@ -502,18 +593,23 @@
             </div>
 
             <button class="cta-button" onclick="submitNewClientAuth()">
-                Continuer vers le choix du soin →
+                Continuer vers le choix du soin
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </button>
         </div>
 
         <!-- ÉTAPE 1 : Choix du soin et des durées -->
         <div id="step-service" class="step-hidden">
-            <button class="back-btn" onclick="goToStep0()">← Retour</button>
+            <button class="back-btn" onclick="goToStep0()">
+                <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Retour
+            </button>
             <div class="section-title">1. Choisissez votre soin & format</div>
             
-            <!-- Bouton déclenchant la modale -->
+            <!-- Bouton déclenchant la modale avec icône SVG -->
             <button type="button" class="view-menu-btn" onclick="openModal()">
-                👁️ Consulter la carte visuelle officielle des soins
+                <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Consulter la carte visuelle officielle des soins
             </button>
 
             <div class="options-list">
@@ -523,7 +619,10 @@
                         <p>Soulager, rééquilibrer, performer durablement.</p>
                         <div class="card-meta">60 min / 75 min / 90 min</div>
                     </div>
-                    <div class="card-action">Choisir →</div>
+                    <div class="card-action">
+                        Choisir
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
                 </div>
 
                 <div class="interactive-card" onclick="selectService('Massage Suédois')">
@@ -532,7 +631,10 @@
                         <p>Détente globale, déconnexion du système nerveux.</p>
                         <div class="card-meta">60 min / 90 min</div>
                     </div>
-                    <div class="card-action">Choisir →</div>
+                    <div class="card-action">
+                        Choisir
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
                 </div>
 
                 <div class="interactive-card" onclick="selectService('Deep Tissue')">
@@ -541,7 +643,10 @@
                         <p>Travail en profondeur sur les tensions chroniques.</p>
                         <div class="card-meta">60 min / 75 min / 90 min</div>
                     </div>
-                    <div class="card-action">Choisir →</div>
+                    <div class="card-action">
+                        Choisir
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
                 </div>
 
                 <div class="interactive-card" onclick="selectService('Massage Sportif')">
@@ -550,7 +655,10 @@
                         <p>Optimisation de la récupération et préparation physique.</p>
                         <div class="card-meta">60 min / 90 min</div>
                     </div>
-                    <div class="card-action">Choisir →</div>
+                    <div class="card-action">
+                        Choisir
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
                 </div>
 
                 <div class="interactive-card" onclick="selectService('Massage Prénatal')">
@@ -559,37 +667,58 @@
                         <p>Accompagnement tout en douceur adapté à la grossesse.</p>
                         <div class="card-meta">60 min / 75 min</div>
                     </div>
-                    <div class="card-action">Choisir →</div>
+                    <div class="card-action">
+                        Choisir
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- ÉTAPE 2 : Choix du cabinet -->
         <div id="step-location" class="step-hidden">
-            <button class="back-btn" onclick="goToStep1()">← Retour au choix du soin</button>
+            <button class="back-btn" onclick="goToStep1()">
+                <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Retour au choix du soin
+            </button>
             <div class="section-title">2. Choisissez votre cabinet</div>
             <div class="options-list">
                 <div class="interactive-card" onclick="selectLocation('Cabinet Beloeil (Clinique Madykera)')">
                     <div class="card-details">
-                        <h3>📍 Beloeil - Clinique Madykera</h3>
+                        <h3>
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Beloeil - Clinique Madykera
+                        </h3>
                         <p>210 Rue Brébeuf</p>
                     </div>
-                    <div class="card-action">Sélectionner →</div>
+                    <div class="card-action">
+                        Sélectionner
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
                 </div>
 
                 <div class="interactive-card" onclick="selectLocation('Cabinet Saint-Hyacinthe (Mouvement Proactif)')">
                     <div class="card-details">
-                        <h3>📍 Saint-Hyacinthe - Mouvement Proactif</h3>
+                        <h3>
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Saint-Hyacinthe - Mouvement Proactif
+                        </h3>
                         <p>460 Av. Saint-Joseph</p>
                     </div>
-                    <div class="card-action">Sélectionner →</div>
+                    <div class="card-action">
+                        Sélectionner
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- ÉTAPE 3 : Choix de l'horaire -->
         <div id="step-time" class="step-hidden">
-            <button class="back-btn" onclick="goToStep2()">← Retour au choix du lieu</button>
+            <button class="back-btn" onclick="goToStep2()">
+                <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Retour au choix du lieu
+            </button>
             <div class="section-title">3. Choisissez un créneau disponible</div>
             <div class="slots-grid">
                 <div class="slot-card" onclick="selectTime('Mardi prochain à 09:00')">Mardi 09:00</div>
@@ -603,7 +732,10 @@
 
         <!-- ÉTAPE 4 : Validation finale -->
         <div id="step-success" class="step-hidden success-box">
-            <button class="back-btn" onclick="goToStep3()">← Modifier l'horaire</button>
+            <button class="back-btn" onclick="goToStep3()">
+                <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Modifier l'horaire
+            </button>
             <h2>✨ Validation de votre séance</h2>
             
             <div class="summary-card">
@@ -614,7 +746,8 @@
             </div>
 
             <button class="cta-button" onclick="window.open('https://www.gorendezvous.com/stessydesir', '_blank')">
-                Confirmer sur l'agenda sécurisé →
+                Confirmer sur l'agenda sécurisé
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </button>
         </div>
 
