@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stessy DESIR Massothérapie | Réservation</title>
-    <!-- Google Fonts pour un rendu haut de gamme -->
+    <title>Stessy DESIR Massothérapie | Réservation en ligne</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2C4A3E; /* Vert chaud / enveloppant */
+            --primary: #2C4A3E;
             --primary-hover: #1E332B;
-            --accent: #D4A373; /* Teinte bois / chaleureuse */
-            --bg-color: #FAF9F6; /* Blanc cassé cocooning */
+            --accent: #D4A373;
+            --bg-color: #F8F9FA;
             --card-bg: #FFFFFF;
             --text-main: #2D3748;
             --text-muted: #718096;
-            --border-radius: 16px;
+            --border-radius: 12px;
         }
 
         * {
@@ -28,281 +27,269 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.6;
-            padding: 20px;
+            line-height: 1.5;
+            padding: 30px 15px;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
+        .booking-container {
+            max-width: 800px;
+            margin: 0 auto;
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
             overflow: hidden;
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-            color: white;
-            padding: 60px 30px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            font-weight: 300;
-            margin-bottom: 20px;
-            opacity: 0.95;
-        }
-
-        /* Badges de réassurance */
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 15px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .badge-item {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            padding: 6px 14px;
-            border-radius: 20px;
-            color: white;
-            text-decoration: none;
-            transition: background 0.2s;
-        }
-
-        .badge-item:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Corps de la page */
-        .content-section {
-            padding: 40px 30px;
-        }
-
-        .section-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--primary);
-            text-align: center;
-        }
-
-        /* Grille des services (Intentions) */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-bottom: 35px;
-        }
-
-        .service-card {
-            border: 2px solid #E2E8F0;
-            border-radius: 12px;
-            padding: 20px;
-            background: #FFF;
-        }
-
-        .service-card h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 6px;
-        }
-
-        .service-card p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* Section Avis Vérifiés */
-        .reviews-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .review-card {
-            background: #F7FAFC;
-            border-radius: 12px;
-            padding: 20px;
             border: 1px solid #E2E8F0;
         }
 
-        .review-stars {
-            color: #D4A373;
-            font-size: 0.9rem;
-            margin-bottom: 8px;
+        /* Header de la clinique (Style US/AUS) */
+        .clinic-header {
+            padding: 30px;
+            border-bottom: 1px solid #E2E8F0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #FFF;
         }
 
-        .review-text {
+        .clinic-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+
+        .clinic-info h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .clinic-info p {
             font-size: 0.85rem;
-            font-style: italic;
-            color: var(--text-main);
-            margin-bottom: 12px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
         }
 
-        .review-author {
+        .google-reviews-link {
+            font-size: 0.85rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .google-reviews-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Corps de sélection (Flux interactif) */
+        .step-section {
+            padding: 30px;
+        }
+
+        .step-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        /* Liste des services type US */
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .service-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 20px;
+            border: 2px solid #E2E8F0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #FFF;
+        }
+
+        .service-option:hover, .service-option.selected {
+            border-color: var(--primary);
+            background: #F4F7F5;
+        }
+
+        .service-details h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 3px;
+        }
+
+        .service-details p {
             font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .service-meta {
+            text-align: right;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--primary);
         }
 
-        /* Choix du Lieu */
-        .locations-container {
+        /* Grille des lieux */
+        .locations-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 40px;
+            gap: 12px;
+            margin-bottom: 30px;
         }
 
         @media (max-width: 600px) {
-            .locations-container {
+            .locations-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        .location-card {
-            background: #F7FAFC;
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid #E2E8F0;
+        .location-option {
+            padding: 16px;
+            border: 2px solid #E2E8F0;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #FFF;
+            transition: all 0.2s;
         }
 
-        .location-card h4 {
-            font-size: 0.95rem;
+        .location-option:hover {
+            border-color: var(--primary);
+        }
+
+        .location-option h4 {
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             color: var(--text-main);
         }
 
-        .location-card p {
-            font-size: 0.85rem;
+        .location-option p {
+            font-size: 0.75rem;
             color: var(--text-muted);
         }
 
-        /* Bouton CTA principal */
-        .cta-container {
-            text-align: center;
+        /* Bouton de validation final */
+        .action-bar {
+            padding: 20px 30px;
+            background: #F8F9FA;
+            border-top: 1px solid #E2E8F0;
+            text-align: right;
         }
 
-        .cta-button {
-            display: inline-block;
+        .proceed-btn {
             background-color: var(--primary);
             color: white;
-            font-size: 1.05rem;
+            border: none;
+            padding: 14px 28px;
+            font-size: 0.95rem;
             font-weight: 600;
-            padding: 16px 36px;
-            border-radius: 30px;
+            border-radius: 8px;
+            cursor: pointer;
             text-decoration: none;
-            transition: background-color 0.2s ease, transform 0.1s ease;
-            box-shadow: 0 4px 15px rgba(44, 74, 62, 0.2);
+            display: inline-block;
+            transition: background 0.2s;
         }
 
-        .cta-button:hover {
+        .proceed-btn:hover {
             background-color: var(--primary-hover);
-            transform: scale(1.02);
-        }
-
-        .footer-note {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Hero Section -->
-        <div class="hero">
-            <h1>Offrez à votre corps la pause qu'il mérite</h1>
-            <p>Massothérapie professionnelle et sur-mesure pour libérer vos tensions profondes.</p>
-            
-            <div class="trust-badges">
-                <!-- Lien direct et vérifiable vers la vraie fiche Google Maps de Stessy -->
-                <a href="https://www.google.com/maps/place/Stessy+DESIR+Massothérapie/@45.6211627,-72.9482494,16z/data=!4m6!3m5!1s0x4cc84f063d0a06fd:0x521c1890929fbb7e!8m2!3d45.6230949!4d-72.9473804!16s%2Fg%2F11nr7v356f?hl=fr-CA&entry=ttu" target="_blank" class="badge-item">
-                    ⭐ 5.0 / 5 (Voir les avis Google)
+    <div class="booking-container">
+        <!-- En-tête profil & avis vérifiés -->
+        <div class="clinic-header">
+            <!-- Remplacer par sa photo officielle -->
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Stessy Desir" class="clinic-avatar">
+            <div class="clinic-info">
+                <h1>Stessy DESIR Massothérapie</h1>
+                <p>Beloeil & Saint-Hyacinthe, QC</p>
+                <!-- Lien direct et vérifiable vers les avis Google -->
+                <a href="https://www.google.com/maps/place/Stessy+DESIR+Massothérapie/@45.6211627,-72.9482494,16z/data=!4m6!3m5!1s0x4cc84f063d0a06fd:0x521c1890929fbb7e!8m2!3d45.6230949!4d-72.9473804!16s%2Fg%2F11nr7v356f?hl=fr-CA&entry=ttu" target="_blank" class="google-reviews-link">
+                    ⭐ 5.0 / 5 (Voir les avis Google vérifiés)
                 </a>
-                <span class="badge-item">🌿 Massothérapeute certifiée</span>
-                <span class="badge-item">📍 Beloeil & Saint-Hyacinthe</span>
             </div>
         </div>
 
-        <!-- Section Contenu -->
-        <div class="content-section">
-            
-            <!-- Choix de l'intention -->
-            <h2 class="section-title">Quel est votre besoin du moment ?</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Massage Thérapeutique / Deep Tissue</h3>
-                    <p>Idéal pour cibler les douleurs chroniques, les nœuds profonds et la récupération musculaire.</p>
+        <div class="step-section">
+            <!-- Étape 1 : Choix de la prestation (Standard US/AUS) -->
+            <div class="step-title">
+                <span class="step-number">1</span> Sélectionnez votre soin
+            </div>
+            <div class="services-list">
+                <div class="service-option selected">
+                    <div class="service-details">
+                        <h3>Massage Thérapeutique / Deep Tissue</h3>
+                        <p>Cible les tensions chroniques et les nœuds musculaires profonds.</p>
+                    </div>
+                    <div class="service-meta">Sur-mesure</div>
                 </div>
-                <div class="service-card">
-                    <h3>Massage Suédois & Détente</h3>
-                    <p>Parfait pour déconnecter le système nerveux, évacuer le stress et s'offrir un lâcher-prise total.</p>
+                <div class="service-option">
+                    <div class="service-details">
+                        <h3>Massage Suédois & Détente</h3>
+                        <p>Lâcher-prise global, déconnexion du système nerveux et apaisement.</p>
+                    </div>
+                    <div class="service-meta">Relaxant</div>
                 </div>
-                <div class="service-card">
-                    <h3>Massage Prénatal & Sportif</h3>
-                    <p>Un accompagnement adapté pour soulager les tensions spécifiques du corps en douceur.</p>
+                <div class="service-option">
+                    <div class="service-details">
+                        <h3>Massage Prénatal & Sportif</h3>
+                        <p>Accompagnement adapté pour soulager les zones de charges spécifiques.</p>
+                    </div>
+                    <div class="service-meta">Spécifique</div>
                 </div>
             </div>
 
-            <!-- Section Avis Vérifiables -->
-            <h2 class="section-title">Ce que nos clients en disent</h2>
-            <div class="reviews-container">
-                <div class="review-card">
-                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                    <p class="review-text">"Une ambiance de grande confiance et un professionnalisme remarquable. Je me sens complètement libéré de mes tensions après chaque séance."</p>
-                    <div class="review-author">— Patient(e) vérifié(e) (Avis Google)</div>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                    <p class="review-text">"Un des meilleurs services de massothérapie reçus. Une écoute attentive et des soins parfaitement ciblés sur mes zones de douleurs."</p>
-                    <div class="review-author">— Client(e) vérifié(e) (Avis Google)</div>
-                </div>
+            <!-- Étape 2 : Choix du lieu -->
+            <div class="step-title">
+                <span class="step-number">2</span> Choisissez votre cabinet
             </div>
-
-            <!-- Choix du Lieu -->
-            <h2 class="section-title">Sélectionnez votre cabinet</h2>
-            <div class="locations-container">
-                <div class="location-card">
+            <div class="locations-grid">
+                <div class="location-option">
                     <h4>📍 Cabinet Beloeil</h4>
-                    <p>210 Rue Brébeuf, Beloeil, QC</p>
+                    <p>210 Rue Brébeuf</p>
                 </div>
-                <div class="location-card">
+                <div class="location-option">
                     <h4>📍 Cabinet Saint-Hyacinthe</h4>
-                    <p>460 Av. Saint-Joseph, Saint-Hyacinthe, QC</p>
+                    <p>460 Av. Saint-Joseph</p>
                 </div>
             </div>
+        </div>
 
-            <!-- Bouton de redirection vers GoRendezVous -->
-            <div class="cta-container">
-                <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="cta-button">
-                    👉 Choisir mon créneau en 2 clics
-                </a>
-            </div>
-
-            <div class="footer-note">
-                <p>Réservation sécurisée en ligne • Reçu pour assurances disponible</p>
-            </div>
-
+        <!-- Barre d'action finale qui bascule vers l'agenda logistique -->
+        <div class="action-bar">
+            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="proceed-btn">
+                Continuer vers le choix de l'horaire →
+            </a>
         </div>
     </div>
 
