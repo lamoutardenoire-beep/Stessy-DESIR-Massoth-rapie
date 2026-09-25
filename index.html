@@ -42,7 +42,7 @@
             padding: 45px 40px;
         }
 
-        /* En-tête épuré et chic */
+        /* En-tête épuré et haut de gamme */
         .clinic-header {
             display: flex;
             align-items: center;
@@ -156,7 +156,7 @@
             gap: 6px;
         }
 
-        /* Cabinets grid */
+        /* Cabinets grid cliquables */
         .locations-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -170,22 +170,41 @@
         }
 
         .location-option {
-            padding: 16px 18px;
+            padding: 18px 20px;
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            background: #FAFAFA;
+            border-radius: 12px;
+            background: #FFF;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: all 0.2s ease;
+        }
+
+        .location-option:hover {
+            border-color: var(--primary);
+            background: #FBFBFA;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
         }
 
         .location-option h4 {
-            font-size: 0.88rem;
+            font-size: 0.95rem;
             font-weight: 600;
             margin-bottom: 2px;
             color: var(--primary);
         }
 
         .location-option p {
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+
+        .location-action {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
         }
 
         /* Footer */
@@ -255,20 +274,22 @@
                     <p>Accompagnement tout en douceur adapté aux besoins de la grossesse.</p>
                 </div>
                 <div class="service-meta">Réserver <span>→</span></div>
-            </a>
+            </a> ...
         </div>
 
-        <!-- Étape 2 : Lieux -->
-        <div class="section-title">2. Nos cabinets disponibles</div>
+        <!-- Étape 2 : Lieux avec les vrais noms de cliniques -->
+        <div class="section-title">2. Ou choisissez directement votre cabinet</div>
         <div class="locations-grid">
-            <div class="location-option">
-                <h4>📍 Cabinet Beloeil</h4>
-                <p>210 Rue Brébeuf</p>
-            </div>
-            <div class="location-option">
-                <h4>📍 Cabinet Saint-Hyacinthe</h4>
-                <p>460 Av. Saint-Joseph</p>
-            </div>
+            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="location-option">
+                <h4>📍 Beloeil</h4>
+                <p>Clinique Madykera<br>210 Rue Brébeuf</p>
+                <span class="location-action">Réserver à Beloeil →</span>
+            </a>
+            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="location-option">
+                <h4>📍 Saint-Hyacinthe</h4>
+                <p>Mouvement Proactif<br>460 Av. Saint-Joseph</p>
+                <span class="location-action">Réserver à St-Hyacinthe →</span>
+            </a>
         </div>
 
         <div class="page-footer">
