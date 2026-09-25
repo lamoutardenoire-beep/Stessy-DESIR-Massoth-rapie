@@ -8,9 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2C4A3E; /* Vert chaud / enveloppante */
+            --primary: #2C4A3E; /* Vert chaud / enveloppant */
             --primary-hover: #1E332B;
-            --accent: #D4A373; /* Teinte bois/chaleureuse */
+            --accent: #D4A373; /* Teinte bois / chaleureuse */
             --bg-color: #FAF9F6; /* Blanc cassé cocooning */
             --card-bg: #FFFFFF;
             --text-main: #2D3748;
@@ -67,7 +67,7 @@
         .trust-badges {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
             margin-top: 15px;
             font-size: 0.9rem;
@@ -79,6 +79,13 @@
             backdrop-filter: blur(5px);
             padding: 6px 14px;
             border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .badge-item:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         /* Corps de la page */
@@ -106,15 +113,8 @@
             border: 2px solid #E2E8F0;
             border-radius: 12px;
             padding: 20px;
-            cursor: pointer;
             transition: all 0.2s ease;
             background: #FFF;
-        }
-
-        .service-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(44, 74, 62, 0.08);
         }
 
         .service-card h3 {
@@ -127,6 +127,41 @@
         .service-card p {
             font-size: 0.85rem;
             color: var(--text-muted);
+        }
+
+        /* Section Avis Vérifiés */
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .review-card {
+            background: #F7FAFC;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #E2E8F0;
+            position: relative;
+        }
+
+        .review-stars {
+            color: #D4A373;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .review-text {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        .review-author {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
         }
 
         /* Choix du Lieu */
@@ -160,7 +195,6 @@
         .location-card p {
             font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 12px;
         }
 
         /* Bouton CTA principal */
@@ -186,7 +220,6 @@
             transform: scale(1.02);
         }
 
-        /* Footer discret */
         .footer-note {
             text-align: center;
             margin-top: 30px;
@@ -204,7 +237,8 @@
             <p>Massothérapie professionnelle et sur-mesure pour libérer vos tensions profondes.</p>
             
             <div class="trust-badges">
-                <span class="badge-item">⭐ 5.0 / 5 (Avis Google)</span>
+                <!-- Lien cliquable vers la vraie fiche / avis vérifiés -->
+                <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="badge-item">⭐ 5.0 / 5 (Avis vérifiés)</a>
                 <span class="badge-item">🌿 Massothérapeute certifiée</span>
                 <span class="badge-item">📍 Beloeil & Saint-Hyacinthe</span>
             </div>
@@ -225,8 +259,23 @@
                     <p>Parfait pour déconnecter le système nerveux, évacuer le stress et s'offrir un lâcher-prise total.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Massage Prénatal</h3>
-                    <p>Un accompagnement tout en douceur pour soulager les tensions du dos et apaiser la maman.</p>
+                    <h3>Massage Prénatal & Sportif</h3>
+                    <p>Un accompagnement adapté pour soulager les tensions spécifiques du corps en douceur.</p>
+                </div>
+            </div>
+
+            <!-- NOUVEAU : Section Avis Vérifiables -->
+            <h2 class="section-title">Ce que nos clients en disent</h2>
+            <div class="reviews-container">
+                <div class="review-card">
+                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">"Une ambiance de grande confiance et un professionnalisme remarquable. Je me sens complètement libéré de mes tensions après chaque séance."</p>
+                    <div class="review-author">— Patient(e) vérifié(e)</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">"Un des meilleurs services de massothérapie reçus. Une écoute attentive et des soins parfaitement ciblés sur mes zones de douleurs."</p>
+                    <div class="review-author">— Client(e) vérifié(e)</div>
                 </div>
             </div>
 
@@ -245,14 +294,13 @@
 
             <!-- Bouton de redirection vers GoRendezVous -->
             <div class="cta-container">
-                <!-- Remplacer le lien '#' par le lien direct de son GoRendezVous -->
                 <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="cta-button">
                     👉 Choisir mon créneau en 2 clics
                 </a>
             </div>
 
             <div class="footer-note">
-                <p>Réservation sécurisée en ligne • Annulation flexible</p>
+                <p>Réservation sécurisée en ligne • Reçu pour assurances disponible</p>
             </div>
 
         </div>
