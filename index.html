@@ -102,6 +102,13 @@
             align-items: center;
             gap: 6px;
             border: 1px solid var(--border-color);
+            text-decoration: none;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .google-reviews:hover {
+            background: #EFECE6;
+            border-color: var(--primary);
         }
 
         .google-reviews svg {
@@ -488,16 +495,17 @@
             <div class="clinic-info">
                 <h1>Stessy DESIR Massothérapie</h1>
                 <p>Beloeil & Saint-Hyacinthe, QC</p>
-                <div class="google-reviews">
+                <!-- Lien cliquable vers les avis Google vérifiés -->
+                <a href="https://www.google.com/maps/place/Stessy+DESIR+Massothérapie/@45.6211627,-72.9482494,16z/data=!4m6!3m5!1s0x4cc84f063d0a06fd:0x521c1890929fbb7e!8m2!3d45.6230949!4d-72.9473804!16s%2Fg%2F11nr7v356f?hl=fr-CA&entry=ttu&g_ep=EgoyMDI2MDkyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="google-reviews">
                     <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    5.0 / 5 (Avis Google vérifiés)
-                </div>
+                    5.0 / 5 (Voir les avis Google vérifiés ↗)
+                </a>
             </div>
         </div>
 
         <!-- ÉTAPE 0 : Accueil / Statut du client -->
         <div id="step-client-type">
-            <div class="section-title">0. Prise de rendez-vous</div>
+            <div class="section-title">Sélectionnez votre profil pour débuter</div>
             <div class="options-list">
                 <div class="interactive-card" onclick="selectClientType('Nouveau client')">
                     <div class="card-details">
