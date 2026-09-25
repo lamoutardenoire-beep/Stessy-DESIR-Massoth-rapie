@@ -28,7 +28,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 50px 20px;
+            padding: 40px 20px;
         }
 
         .booking-container {
@@ -39,7 +39,26 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
             border: 1px solid var(--border-color);
             overflow: hidden;
-            padding: 45px 40px;
+            padding: 40px;
+        }
+
+        /* Top bar pour client existant */
+        .top-client-bar {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .existing-client-link {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .existing-client-link:hover {
+            color: var(--primary);
+            text-decoration: underline;
         }
 
         /* En-tête épuré et haut de gamme */
@@ -47,7 +66,7 @@
             display: flex;
             align-items: center;
             gap: 24px;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             padding-bottom: 30px;
             border-bottom: 1px solid var(--border-color);
         }
@@ -221,6 +240,14 @@
 <body>
 
     <div class="booking-container">
+        
+        <!-- Petit lien discret pour les clients existants -->
+        <div class="top-client-bar">
+            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="existing-client-link">
+                Déjà client ? Se connecter ➔
+            </a>
+        </div>
+
         <!-- En-tête épuré et haut de gamme -->
         <div class="clinic-header">
             <img src="stessy.png" alt="Stessy DESIR" class="clinic-avatar">
@@ -274,10 +301,10 @@
                     <p>Accompagnement tout en douceur adapté aux besoins de la grossesse.</p>
                 </div>
                 <div class="service-meta">Réserver <span>→</span></div>
-            </a> ...
+            </a>
         </div>
 
-        <!-- Étape 2 : Lieux avec les vrais noms de cliniques -->
+        <!-- Étape 2 : Lieux -->
         <div class="section-title">2. Ou choisissez directement votre cabinet</div>
         <div class="locations-grid">
             <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="location-option">
