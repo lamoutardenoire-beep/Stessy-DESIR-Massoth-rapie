@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stessy DESIR Massothérapie | Réservation</title>
+    <!-- Google Fonts pour un rendu haut de gamme -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2C4A3E; /* Vert chaud / enveloppante */
+            --primary-hover: #1E332B;
+            --accent: #D4A373; /* Teinte bois/chaleureuse */
+            --bg-color: #FAF9F6; /* Blanc cassé cocooning */
+            --card-bg: #FFFFFF;
+            --text-main: #2D3748;
+            --text-muted: #718096;
+            --border-radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            color: white;
+            padding: 60px 30px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        /* Badges de réassurance */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .badge-item {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        /* Corps de la page */
+        .content-section {
+            padding: 40px 30px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        /* Grille des services (Intentions) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .service-card {
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #FFF;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44, 74, 62, 0.08);
+        }
+
+        .service-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .service-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Choix du Lieu */
+        .locations-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .locations-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .location-card {
+            background: #F7FAFC;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #E2E8F0;
+        }
+
+        .location-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+
+        .location-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        /* Bouton CTA principal */
+        .cta-container {
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            font-size: 1.05rem;
+            font-weight: 600;
+            padding: 16px 36px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            box-shadow: 0 4px 15px rgba(44, 74, 62, 0.2);
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-hover);
+            transform: scale(1.02);
+        }
+
+        /* Footer discret */
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>Offrez à votre corps la pause qu'il mérite</h1>
+            <p>Massothérapie professionnelle et sur-mesure pour libérer vos tensions profondes.</p>
+            
+            <div class="trust-badges">
+                <span class="badge-item">⭐ 5.0 / 5 (Avis Google)</span>
+                <span class="badge-item">🌿 Massothérapeute certifiée</span>
+                <span class="badge-item">📍 Beloeil & Saint-Hyacinthe</span>
+            </div>
+        </div>
+
+        <!-- Section Contenu -->
+        <div class="content-section">
+            
+            <!-- Choix de l'intention -->
+            <h2 class="section-title">Quel est votre besoin du moment ?</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Massage Thérapeutique / Deep Tissue</h3>
+                    <p>Idéal pour cibler les douleurs chroniques, les nœuds profonds et la récupération musculaire.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Massage Suédois & Détente</h3>
+                    <p>Parfait pour déconnecter le système nerveux, évacuer le stress et s'offrir un lâcher-prise total.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Massage Prénatal</h3>
+                    <p>Un accompagnement tout en douceur pour soulager les tensions du dos et apaiser la maman.</p>
+                </div>
+            </div>
+
+            <!-- Choix du Lieu -->
+            <h2 class="section-title">Sélectionnez votre cabinet</h2>
+            <div class="locations-container">
+                <div class="location-card">
+                    <h4>📍 Cabinet Beloeil</h4>
+                    <p>210 Rue Brébeuf, Beloeil, QC</p>
+                </div>
+                <div class="location-card">
+                    <h4>📍 Cabinet Saint-Hyacinthe</h4>
+                    <p>460 Av. Saint-Joseph, Saint-Hyacinthe, QC</p>
+                </div>
+            </div>
+
+            <!-- Bouton de redirection vers GoRendezVous -->
+            <div class="cta-container">
+                <!-- Remplacer le lien '#' par le lien direct de son GoRendezVous -->
+                <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="cta-button">
+                    👉 Choisir mon créneau en 2 clics
+                </a>
+            </div>
+
+            <div class="footer-note">
+                <p>Réservation sécurisée en ligne • Annulation flexible</p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
