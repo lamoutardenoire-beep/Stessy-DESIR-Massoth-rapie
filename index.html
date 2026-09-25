@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stessy DESIR Massothérapie | Réservation interactive</title>
+    <title>Stessy DESIR Massothérapie | Réservation en ligne</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1F382E;
-            --primary-hover: #162820;
-            --accent: #C5A059;
-            --bg-color: #FAFAF9;
+            --bg-sand: #EFECE6;
             --card-bg: #FFFFFF;
-            --text-main: #1A2E26;
-            --text-muted: #64748B;
-            --border-color: #E2E8F0;
+            --primary: #2C2622;
+            --accent: #A89580;
+            --text-main: #2C2622;
+            --text-muted: #7A726A;
+            --border-color: #E2DDD5;
             --border-radius: 16px;
         }
 
@@ -26,10 +25,10 @@
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: var(--bg-sand);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 60px 20px;
+            padding: 50px 20px;
         }
 
         .booking-container {
@@ -37,7 +36,7 @@
             margin: 0 auto;
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 20px 40px rgba(44, 38, 34, 0.06);
             border: 1px solid var(--border-color);
             overflow: hidden;
             padding: 45px;
@@ -52,14 +51,14 @@
             display: flex;
             align-items: center;
             gap: 24px;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             padding-bottom: 30px;
             border-bottom: 1px solid var(--border-color);
         }
 
         .clinic-avatar {
-            width: 80px;
-            height: 80px;
+            width: 85px;
+            height: 85px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--accent);
@@ -67,7 +66,7 @@
         }
 
         .clinic-info h1 {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 4px;
@@ -81,21 +80,22 @@
         }
 
         .google-reviews {
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             color: var(--primary);
             font-weight: 600;
-            background: #F1F5F2;
+            background: #F7F5F0;
             padding: 4px 12px;
             border-radius: 20px;
             display: inline-block;
+            border: 1px solid var(--border-color);
         }
 
         .section-title {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 600;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.1em;
             margin-bottom: 20px;
         }
 
@@ -121,9 +121,9 @@
 
         .interactive-card:hover {
             border-color: var(--primary);
-            background: #FBFBFA;
+            background: #FAF8F5;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(31, 56, 46, 0.04);
+            box-shadow: 0 8px 20px rgba(44, 38, 34, 0.04);
         }
 
         .card-details h3 {
@@ -209,7 +209,7 @@
         }
 
         .summary-card {
-            background: #F8F9F8;
+            background: #F7F5F0;
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 20px;
@@ -238,14 +238,26 @@
             font-weight: 600;
             font-size: 0.95rem;
             transition: background-color 0.2s, transform 0.2s;
-            box-shadow: 0 4px 12px rgba(31, 56, 46, 0.15);
+            box-shadow: c;
             border: none;
             cursor: pointer;
         }
 
         .cta-button:hover {
-            background-color: var(--primary-hover);
+            background-color: #423832;
             transform: translateY(-2px);
+        }
+
+        /* Citation de bas de page inspirée du visuel */
+        .page-quote {
+            text-align: center;
+            margin-top: 35px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-style: italic;
+            letter-spacing: 0.02em;
         }
     </style>
 </head>
@@ -284,7 +296,7 @@
             </div>
         </div>
 
-        <!-- ÉTAPE 1 : Choix du soin (Pour nouveaux clients) -->
+        <!-- ÉTAPE 1 : Choix du soin -->
         <div id="step-service" class="step-hidden">
             <button class="back-btn" onclick="goToStep0()">← Retour</button>
             <div class="section-title">1. Choisissez votre soin</div>
@@ -292,7 +304,7 @@
                 <div class="interactive-card" onclick="selectService('Massage Thérapeutique')">
                     <div class="card-details">
                         <h3>Massage Thérapeutique</h3>
-                        <p>Soulagement des douleurs musculaires et articulaires ciblées.</p>
+                        <p>Soulager, rééquilibrer, performer durablement.</p>
                     </div>
                     <div class="card-action">Choisir →</div>
                 </div>
@@ -300,7 +312,7 @@
                 <div class="interactive-card" onclick="selectService('Massage Suédois')">
                     <div class="card-details">
                         <h3>Massage Suédois</h3>
-                        <p>Détente globale, déconnexion du système nerveux et lâcher-prise.</p>
+                        <p>Détente globale, déconnexion du système nerveux.</p>
                     </div>
                     <div class="card-action">Choisir →</div>
                 </div>
@@ -308,7 +320,7 @@
                 <div class="interactive-card" onclick="selectService('Deep Tissue')">
                     <div class="card-details">
                         <h3>Deep Tissue</h3>
-                        <p>Travail en profondeur sur les tensions chroniques et les nœuds.</p>
+                        <p>Travail en profondeur sur les tensions chroniques.</p>
                     </div>
                     <div class="card-action">Choisir →</div>
                 </div>
@@ -324,7 +336,7 @@
                 <div class="interactive-card" onclick="selectService('Massage Prénatal')">
                     <div class="card-details">
                         <h3>Massage Prénatal</h3>
-                        <p>Accompagnement tout en douceur adapté aux besoins de la grossesse.</p>
+                        <p>Accompagnement tout en douceur adapté à la grossesse.</p>
                     </div>
                     <div class="card-action">Choisir →</div>
                 </div>
@@ -354,7 +366,7 @@
             </div>
         </div>
 
-        <!-- ÉTAPE 3 : Choix de l'horaire (Calendrier simulé) -->
+        <!-- ÉTAPE 3 : Choix de l'horaire -->
         <div id="step-time" class="step-hidden">
             <button class="back-btn" onclick="goToStep2()">← Retour au choix du lieu</button>
             <div class="section-title">3. Choisissez un créneau disponible</div>
@@ -385,6 +397,10 @@
             </button>
         </div>
 
+        <!-- Citation de bas de page inspirée de sa charte -->
+        <div class="page-quote">
+            « Chaque massage est unique, tout comme vous. » • Reçu pour assurances disponible
+        </div>
     </div>
 
     <script>
@@ -396,10 +412,8 @@
         function selectClientType(type) {
             clientType = type;
             if (type === 'Client existant') {
-                // Redirection directe vers l'espace de connexion existant (ou GoRendezVous)
                 window.open('https://www.gorendezvous.com/stessydesir', '_blank');
             } else {
-                // Passage à l'étape des soins pour les nouveaux clients
                 document.getElementById('step-client-type').classList.add('step-hidden');
                 document.getElementById('step-service').classList.remove('step-hidden');
             }
