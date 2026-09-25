@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stessy DESIR Massothérapie | Réservation en ligne</title>
+    <title>Stessy DESIR Massothérapie | Réservation interactive</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -28,7 +28,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 40px 20px;
+            padding: 50px 20px;
         }
 
         .booking-container {
@@ -42,26 +42,11 @@
             padding: 40px;
         }
 
-        /* Top bar pour client existant */
-        .top-client-bar {
-            text-align: right;
-            margin-bottom: 20px;
+        .step-hidden {
+            display: none;
         }
 
-        .existing-client-link {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .existing-client-link:hover {
-            color: var(--primary);
-            text-decoration: underline;
-        }
-
-        /* En-tête épuré et haut de gamme */
+        /* En-tête */
         .clinic-header {
             display: flex;
             align-items: center;
@@ -85,35 +70,14 @@
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 4px;
-            letter-spacing: -0.01em;
         }
 
         .clinic-info p {
             font-size: 0.85rem;
             color: var(--text-muted);
             margin-bottom: 8px;
-            font-weight: 400;
         }
 
-        .google-reviews-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.82rem;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            background: #F1F5F2;
-            padding: 4px 12px;
-            border-radius: 20px;
-            transition: background 0.2s;
-        }
-
-        .google-reviews-link:hover {
-            background: #E2ECE7;
-        }
-
-        /* Section titres et étapes */
         .section-title {
             font-size: 0.95rem;
             font-weight: 600;
@@ -123,15 +87,15 @@
             margin-bottom: 16px;
         }
 
-        /* Liste des services */
-        .services-list {
+        /* Options interactives */
+        .options-list {
             display: flex;
             flex-direction: column;
             gap: 12px;
             margin-bottom: 35px;
         }
 
-        .service-option {
+        .interactive-card {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -141,188 +105,186 @@
             cursor: pointer;
             transition: all 0.2s ease;
             background: #FFF;
-            text-decoration: none;
-            color: inherit;
         }
 
-        .service-option:hover {
+        .interactive-card:hover {
             border-color: var(--primary);
             background: #FBFBFA;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
         }
 
-        .service-details h3 {
+        .card-details h3 {
             font-size: 0.95rem;
             font-weight: 600;
             color: var(--text-main);
             margin-bottom: 2px;
         }
 
-        .service-details p {
+        .card-details p {
             font-size: 0.8rem;
             color: var(--text-muted);
-            font-weight: 300;
         }
 
-        .service-meta {
+        .card-action {
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--primary);
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
-        /* Cabinets grid cliquables */
-        .locations-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        @media (max-width: 600px) {
-            .locations-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .location-option {
-            padding: 18px 20px;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            background: #FFF;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            transition: all 0.2s ease;
-        }
-
-        .location-option:hover {
-            border-color: var(--primary);
-            background: #FBFBFA;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
-        }
-
-        .location-option h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 2px;
-            color: var(--primary);
-        }
-
-        .location-option p {
-            font-size: 0.8rem;
+        .back-btn {
+            background: none;
+            border: none;
             color: var(--text-muted);
-            font-weight: 300;
-            margin-bottom: 8px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-weight: 500;
         }
 
-        .location-action {
-            font-size: 0.8rem;
-            font-weight: 600;
+        .back-btn:hover {
             color: var(--primary);
         }
 
-        /* Footer */
-        .page-footer {
+        /* Succès / Étape finale */
+        .success-box {
             text-align: center;
-            margin-top: 35px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.78rem;
+            padding: 30px 20px;
+        }
+
+        .success-box h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .success-box p {
             color: var(--text-muted);
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
     <div class="booking-container">
-        
-        <!-- Petit lien discret pour les clients existants -->
-        <div class="top-client-bar">
-            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="existing-client-link">
-                Déjà client ? Se connecter ➔
-            </a>
-        </div>
-
-        <!-- En-tête épuré et haut de gamme -->
+        <!-- En-tête -->
         <div class="clinic-header">
             <img src="stessy.png" alt="Stessy DESIR" class="clinic-avatar">
             <div class="clinic-info">
                 <h1>Stessy DESIR Massothérapie</h1>
                 <p>Beloeil & Saint-Hyacinthe, QC</p>
-                <a href="https://www.google.com/maps/place/Stessy+DESIR+Massothérapie/@45.6211627,-72.9482494,16z/data=!4m6!3m5!1s0x4cc84f063d0a06fd:0x521c1890929fbb7e!8m2!3d45.6230949!4d-72.9473804!16s%2Fg%2F11nr7v356f?hl=fr-CA&entry=ttu" target="_blank" class="google-reviews-link">
-                    ⭐ 5.0 / 5 (Avis Google vérifiés)
-                </a>
+                <span style="font-size: 0.82rem; color: var(--primary); font-weight: 600;">⭐ 5.0 / 5 (Avis Google vérifiés)</span>
             </div>
         </div>
 
-        <!-- Étape 1 : Services exacts -->
-        <div class="section-title">1. Choisissez votre soin</div>
-        <div class="services-list">
-            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="service-option">
-                <div class="service-details">
-                    <h3>Massage Thérapeutique</h3>
-                    <p>Soulagement des douleurs musculaires et articulaires ciblées.</p>
+        <!-- ÉTAPE 1 : Choix du soin -->
+        <div id="step-service">
+            <div class="section-title">1. Choisissez votre soin</div>
+            <div class="options-list">
+                <div class="interactive-card" onclick="selectService('Massage Thérapeutique')">
+                    <div class="card-details">
+                        <h3>Massage Thérapeutique</h3>
+                        <p>Soulagement des douleurs musculaires et articulaires ciblées.</p>
+                    </div>
+                    <div class="card-action">Choisir →</div>
                 </div>
-                <div class="service-meta">Réserver <span>→</span></div>
-            </a>
 
-            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="service-option">
-                <div class="service-details">
-                    <h3>Massage Suédois</h3>
-                    <p>Détente globale, déconnexion du système nerveux et lâcher-prise.</p>
+                <div class="interactive-card" onclick="selectService('Massage Suédois')">
+                    <div class="card-details">
+                        <h3>Massage Suédois</h3>
+                        <p>Détente globale, déconnexion du système nerveux et lâcher-prise.</p>
+                    </div>
+                    <div class="card-action">Choisir →</div>
                 </div>
-                <div class="service-meta">Réserver <span>→</span></div>
-            </a>
 
-            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="service-option">
-                <div class="service-details">
-                    <h3>Deep Tissue</h3>
-                    <p>Travail en profondeur sur les tensions chroniques et les nœuds.</p>
+                <div class="interactive-card" onclick="selectService('Deep Tissue')">
+                    <div class="card-details">
+                        <h3>Deep Tissue</h3>
+                        <p>Travail en profondeur sur les tensions chroniques et les nœuds.</p>
+                    </div>
+                    <div class="card-action">Choisir →</div>
                 </div>
-                <div class="service-meta">Réserver <span>→</span></div>
-            </a>
 
-            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="service-option">
-                <div class="service-details">
-                    <h3>Massage Sportif</h3>
-                    <p>Optimisation de la récupération et préparation physique.</p>
+                <div class="interactive-card" onclick="selectService('Massage Sportif')">
+                    <div class="card-details">
+                        <h3>Massage Sportif</h3>
+                        <p>Optimisation de la récupération et préparation physique.</p>
+                    </div>
+                    <div class="card-action">Choisir →</div>
                 </div>
-                <div class="service-meta">Réserver <span>→</span></div>
-            </a>
 
-            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="service-option">
-                <div class="service-details">
-                    <h3>Massage Prénatal</h3>
-                    <p>Accompagnement tout en douceur adapté aux besoins de la grossesse.</p>
+                <div class="interactive-card" onclick="selectService('Massage Prénatal')">
+                    <div class="card-details">
+                        <h3>Massage Prénatal</h3>
+                        <p>Accompagnement tout en douceur adapté aux besoins de la grossesse.</p>
+                    </div>
+                    <div class="card-action">Choisir →</div>
                 </div>
-                <div class="service-meta">Réserver <span>→</span></div>
-            </a>
+            </div>
         </div>
 
-        <!-- Étape 2 : Lieux -->
-        <div class="section-title">2. Ou choisissez directement votre cabinet</div>
-        <div class="locations-grid">
-            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="location-option">
-                <h4>📍 Beloeil</h4>
-                <p>Clinique Madykera<br>210 Rue Brébeuf</p>
-                <span class="location-action">Réserver à Beloeil →</span>
-            </a>
-            <a href="https://www.gorendezvous.com/stessydesir" target="_blank" class="location-option">
-                <h4>📍 Saint-Hyacinthe</h4>
-                <p>Mouvement Proactif<br>460 Av. Saint-Joseph</p>
-                <span class="location-action">Réserver à St-Hyacinthe →</span>
-            </a>
+        <!-- ÉTAPE 2 : Choix du cabinet (Caché par défaut) -->
+        <div id="step-location" class="step-hidden">
+            <button class="back-btn" onclick="goToStep1()">← Retour au choix du soin</button>
+            <div class="section-title">2. Choisissez votre cabinet</div>
+            <div class="options-list">
+                <div class="interactive-card" onclick="selectLocation('Cabinet Beloeil (Clinique Madykera)')">
+                    <div class="card-details">
+                        <h3>📍 Beloeil - Clinique Madykera</h3>
+                        <p>210 Rue Brébeuf</p>
+                    </div>
+                    <div class="card-action">Sélectionner →</div>
+                </div>
+
+                <div class="interactive-card" onclick="selectLocation('Cabinet Saint-Hyacinthe (Mouvement Proactif)')">
+                    <div class="card-details">
+                        <h3>📍 Saint-Hyacinthe - Mouvement Proactif</h3>
+                        <p>460 Av. Saint-Joseph</p>
+                    </div>
+                    <div class="card-action">Sélectionner →</div>
+                </div>
+            </div>
         </div>
 
-        <div class="page-footer">
-            <p>🔒 Réservation sécurisée en ligne • Reçu pour assurances disponible</p>
+        <!-- ÉTAPE 3 : Confirmation interactive (Caché par défaut) -->
+        <div id="step-success" class="step-hidden success-box">
+            <button class="back-btn" onclick="goToStep2()">← Modifier la sélection</button>
+            <h2>🎉 Votre parcours est prêt !</h2>
+            <p id="summary-text" style="font-weight: 500; color: var(--text-main); margin-bottom: 25px;"></p>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Ici, le client pourrait valider son créneau horaire en un clic sans friction.</p>
         </div>
+
     </div>
 
+    <script>
+        let chosenService = "";
+        let chosenLocation = "";
+
+        function selectService(serviceName) {
+            chosenService = serviceName;
+            document.getElementById('step-service').classList.add('step-hidden');
+            document.getElementById('step-location').classList.remove('step-hidden');
+        }
+
+        function selectLocation(locationName) {
+            chosenLocation = locationName;
+            document.getElementById('step-location').classList.add('step-hidden');
+            document.getElementById('step-success').classList.remove('step-hidden');
+            
+            document.getElementById('summary-text').innerHTML = 
+                `Soin sélectionné : <span style="color: var(--primary);">${chosenService}</span><br>` +
+                `Lieu : <span style="color: var(--primary);">${chosenLocation}</span>`;
+        }
+
+        function goToStep1() {
+            document.getElementById('step-location').classList.add('step-hidden');
+            document.getElementById('step-service').classList.remove('step-hidden');
+        }
+
+        function goToStep2() {
+            document.getElementById('step-success').classList.add('step-hidden');
+            document.getElementById('step-location').classList.remove('step-hidden');
+        }
+    </script>
 </body>
 </html>
