@@ -262,8 +262,31 @@
             </div>
         </div>
 
-        <!-- ÉTAPE 1 : Choix du soin -->
-        <div id="step-service">
+        <!-- ÉTAPE 0 : Accueil / Statut du client -->
+        <div id="step-client-type">
+            <div class="section-title">0. Prise de rendez-vous</div>
+            <div class="options-list">
+                <div class="interactive-card" onclick="selectClientType('Nouveau client')">
+                    <div class="card-details">
+                        <h3>Je suis un nouveau client</h3>
+                        <p>Découvrir les soins et réserver une première séance.</p>
+                    </div>
+                    <div class="card-action">Commencer →</div>
+                </div>
+
+                <div class="interactive-card" onclick="selectClientType('Client existant')">
+                    <div class="card-details">
+                        <h3>Je suis un client existant</h3>
+                        <p>Accéder directement à mon dossier et mes habitudes.</p>
+                    </div>
+                    <div class="card-action">Se connecter →</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ÉTAPE 1 : Choix du soin (Pour nouveaux clients) -->
+        <div id="step-service" class="step-hidden">
+            <button class="back-btn" onclick="goToStep0()">← Retour</button>
             <div class="section-title">1. Choisissez votre soin</div>
             <div class="options-list">
                 <div class="interactive-card" onclick="selectService('Massage Thérapeutique')">
@@ -351,12 +374,13 @@
             <h2>✨ Réservation presque terminée</h2>
             
             <div class="summary-card">
-                <div class="summary-item">Soin : <span id="summary-service"></span></div>
+                <div class="summary-item">Statut : <span id="summary-client"></span></div>
+                <div class="summary-item" style="margin-top: 6px;">Soin : <span id="summary-service"></span></div>
                 <div class="summary-item" style="margin-top: 6px;">Lieu : <span id="summary-location"></span></div>
                 <div class="summary-item" style="margin-top: 6px;">Créneau : <span id="summary-time"></span></div>
             </div>
 
-            <button class="cta-button" onclick="alert('Ici, le système enregistre le rendez-vous ou bascule sur le paiement/confirmation final !')">
+            <button class="cta-button" onclick="alert('Redirection vers le système de paiement ou la confirmation définitive !')">
                 Confirmer ce rendez-vous →
             </button>
         </div>
@@ -364,9 +388,22 @@
     </div>
 
     <script>
+        let clientType = "";
         let chosenService = "";
         let chosenLocation = "";
         let chosenTime = "";
+
+        function selectClientType(type) {
+            clientType = type;
+            if (type === 'Client existant') {
+                // Redirection directe vers l'espace de connexion existant (ou GoRendezVous)
+                window.open('https://www.gorendezvous.com/stessydesir', '_blank');
+            } else {
+                // Passage à l'étape des soins pour les nouveaux clients
+                document.getElementById('step-client-type').classList.add('step-hidden');
+                document.getElementById('step-service').classList.remove('step-hidden');
+            }
+        }
 
         function selectService(serviceName) {
             chosenService = serviceName;
@@ -385,9 +422,15 @@
             document.getElementById('step-time').classList.add('step-hidden');
             document.getElementById('step-success').classList.remove('step-hidden');
             
+            document.getElementById('summary-client').innerText = clientType;
             document.getElementById('summary-service').innerText = chosenService;
             document.getElementById('summary-location').innerText = chosenLocation;
             document.getElementById('summary-time').innerText = chosenTime;
+        }
+
+        function goToStep0() {
+            document.getElementById('step-service').classList.add('step-hidden');
+            document.getElementById('step-client-type').classList.remove('step-hidden');
         }
 
         function goToStep1() {
