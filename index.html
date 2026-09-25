@@ -139,6 +139,13 @@
             font-weight: 300;
         }
 
+        .card-meta {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
         .card-action {
             font-size: 0.85rem;
             font-weight: 600;
@@ -417,47 +424,52 @@
             </button>
         </div>
 
-        <!-- ÉTAPE 1 : Choix du soin -->
+        <!-- ÉTAPE 1 : Choix du soin et des durées/tarifs -->
         <div id="step-service" class="step-hidden">
             <button class="back-btn" onclick="goToStep0()">← Retour</button>
-            <div class="section-title">1. Choisissez votre soin</div>
+            <div class="section-title">1. Choisissez votre soin & format</div>
             <div class="options-list">
-                <div class="interactive-card" onclick="selectService('Massage Thérapeutique')">
+                <div class="interactive-card" onclick="selectService('Massage Thérapeutique (60 min)')">
                     <div class="card-details">
                         <h3>Massage Thérapeutique</h3>
-                        <p>Soulager, rééquilibrer, performer durablement.</p>
+                        <p>Soulager, rééquilibrer, performer durablement[cite: 5].</p>
+                        <div class="card-meta">60 min / 75 min / 90 min[cite: 5]</div>
                     </div>
                     <div class="card-action">Choisir →</div>
                 </div>
 
-                <div class="interactive-card" onclick="selectService('Massage Suédois')">
+                <div class="interactive-card" onclick="selectService('Massage Suédois (60 min)')">
                     <div class="card-details">
                         <h3>Massage Suédois</h3>
                         <p>Détente globale, déconnexion du système nerveux.</p>
+                        <div class="card-meta">60 min / 90 min</div>
                     </div>
                     <div class="card-action">Choisir →</div>
                 </div>
 
-                <div class="interactive-card" onclick="selectService('Deep Tissue')">
+                <div class="interactive-card" onclick="selectService('Deep Tissue (60 min)')">
                     <div class="card-details">
                         <h3>Deep Tissue</h3>
                         <p>Travail en profondeur sur les tensions chroniques.</p>
+                        <div class="card-meta">60 min / 75 min / 90 min</div>
                     </div>
                     <div class="card-action">Choisir →</div>
                 </div>
 
-                <div class="interactive-card" onclick="selectService('Massage Sportif')">
+                <div class="interactive-card" onclick="selectService('Massage Sportif (60 min)')">
                     <div class="card-details">
                         <h3>Massage Sportif</h3>
                         <p>Optimisation de la récupération et préparation physique.</p>
+                        <div class="card-meta">60 min / 90 min</div>
                     </div>
                     <div class="card-action">Choisir →</div>
                 </div>
 
-                <div class="interactive-card" onclick="selectService('Massage Prénatal')">
+                <div class="interactive-card" onclick="selectService('Massage Prénatal (60 min)')">
                     <div class="card-details">
                         <h3>Massage Prénatal</h3>
                         <p>Accompagnement tout en douceur adapté à la grossesse.</p>
+                        <div class="card-meta">60 min / 75 min</div>
                     </div>
                     <div class="card-action">Choisir →</div>
                 </div>
