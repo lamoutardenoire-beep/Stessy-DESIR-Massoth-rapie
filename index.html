@@ -145,7 +145,7 @@
             color: var(--primary);
         }
 
-        /* Formulaire stylisé pour les clients existants */
+        /* Formulaires stylisés */
         .auth-form {
             display: flex;
             flex-direction: column;
@@ -335,7 +335,7 @@
                 <div class="interactive-card" onclick="selectClientType('Nouveau client')">
                     <div class="card-details">
                         <h3>Je suis un nouveau client</h3>
-                        <p>Découvrir les soins et réserver une première séance.</p>
+                        <p>Créer mon profil et réserver une première séance.</p>
                     </div>
                     <div class="card-action">Commencer →</div>
                 </div>
@@ -350,12 +350,12 @@
             </div>
         </div>
 
-        <!-- ÉTAPE 0.5 : Formulaire de vérification Client Existant (Inspiré de GoRendezVous) -->
+        <!-- ÉTAPE 0.5A : Formulaire Client Existant -->
         <div id="step-existing-auth" class="step-hidden">
             <button class="back-btn" onclick="goToStep0()">← Retour</button>
             <div class="section-title">Vérification de votre dossier</div>
             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">
-                Cette étape protège vos renseignements personnels et permet de personnaliser vos options de réservation.
+                Cette étape protège vos renseignements personnels et permet de retrouver vos habitudes.
             </p>
             
             <div class="auth-form">
@@ -370,8 +370,8 @@
                 <div class="form-group">
                     <label>Recevoir le code par</label>
                     <div class="radio-group">
-                        <label><input type="radio" name="contact-method" checked> Courriel</label>
-                        <label><input type="radio" name="contact-method"> Texto</label>
+                        <label><input type="radio" name="contact-method-ex" checked> Courriel</label>
+                        <label><input type="radio" name="contact-method-ex"> Texto</label>
                     </div>
                 </div>
                 <div class="form-group" style="margin-top: 6px;">
@@ -382,6 +382,38 @@
 
             <button class="cta-button" onclick="submitExistingClientAuth()">
                 Recevoir mon code →
+            </button>
+        </div>
+
+        <!-- ÉTAPE 0.5B : Formulaire Nouveau Client -->
+        <div id="step-new-auth" class="step-hidden">
+            <button class="back-btn" onclick="goToStep0()">← Retour</button>
+            <div class="section-title">Création de votre profil</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">
+                Entrez vos coordonnées pour préparer votre première visite et vos reçus d'assurance.
+            </p>
+            
+            <div class="auth-form">
+                <div class="form-group">
+                    <label>Prénom</label>
+                    <input type="text" id="new-firstname" placeholder="Ex. Thomas">
+                </div>
+                <div class="form-group">
+                    <label>Nom de famille</label>
+                    <input type="text" id="new-lastname" placeholder="Ex. Gagnon">
+                </div>
+                <div class="form-group">
+                    <label>Courriel</label>
+                    <input type="email" id="new-email" placeholder="thomas.gagnon@courriel.com">
+                </div>
+                <div class="form-group">
+                    <label>Téléphone (pour les rappels)</label>
+                    <input type="tel" id="new-phone" placeholder="(579) 000-0000">
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="submitNewClientAuth()">
+                Continuer vers le choix du soin →
             </button>
         </div>
 
@@ -475,7 +507,7 @@
             <h2>✨ Validation de votre séance</h2>
             
             <div class="summary-card">
-                <div class="summary-item">Profil : <span id="summary-client"></span></div>
+                <div class="summary-item">Profil : <span id="summary-client"></span> (<span id="summary-name"></span>)</div>
                 <div class="summary-item" style="margin-top: 6px;">Soin : <span id="summary-service"></span></div>
                 <div class="summary-item" style="margin-top: 6px;">Lieu : <span id="summary-location"></span></div>
                 <div class="summary-item" style="margin-top: 6px;">Créneau : <span id="summary-time"></span></div>
@@ -494,6 +526,7 @@
 
     <script>
         let clientType = "";
+        let clientName = "";
         let chosenService = "";
         let chosenLocation = "";
         let chosenTime = "";
@@ -501,7 +534,7 @@
         function selectClientType(type) {
             clientType = type;
             document.getElementById('step-client-type').classList.add('step-hidden');
-            document.getElementById('step-service').classList.remove('step-hidden');
+            document.getElementById('step-new-auth').classList.remove('step-hidden');
         }
 
         function showExistingClientForm() {
@@ -512,12 +545,25 @@
 
         function submitExistingClientAuth() {
             const firstname = document.getElementById('auth-firstname').value;
-            if(!firstname) {
-                alert('Veuillez entrer votre prénom pour continuer.');
+            const lastname = document.getElementById('auth-lastname').value;
+            if(!firstname || !lastname) {
+                alert('Veuillez remplir votre prénom et votre nom.');
                 return;
             }
-            // Une fois identifié, on l'envoie vers le choix du soin (avec liberté totale)
+            clientName = firstname + ' ' + lastname;
             document.getElementById('step-existing-auth').classList.add('step-hidden');
+            document.getElementById('step-service').classList.remove('step-hidden');
+        }
+
+        function submitNewClientAuth() {
+            const firstname = document.getElementById('new-firstname').value;
+            const lastname = document.getElementById('new-lastname').value;
+            if(!firstname || !lastname) {
+                alert('Veuillez remplir votre prénom et votre nom pour créer votre profil.');
+                return;
+            }
+            clientName = firstname + ' ' + lastname;
+            document.getElementById('step-new-auth').classList.add('step-hidden');
             document.getElementById('step-service').classList.remove('step-hidden');
         }
 
@@ -539,6 +585,7 @@
             document.getElementById('step-success').classList.remove('step-hidden');
             
             document.getElementById('summary-client').innerText = clientType;
+            document.getElementById('summary-name').innerText = clientName;
             document.getElementById('summary-service').innerText = chosenService;
             document.getElementById('summary-location').innerText = chosenLocation;
             document.getElementById('summary-time').innerText = chosenTime;
@@ -546,6 +593,7 @@
 
         function goToStep0() {
             document.getElementById('step-existing-auth').classList.add('step-hidden');
+            document.getElementById('step-new-auth').classList.add('step-hidden');
             document.getElementById('step-service').classList.add('step-hidden');
             document.getElementById('step-client-type').classList.remove('step-hidden');
         }
