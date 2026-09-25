@@ -42,7 +42,7 @@
             padding: 40px;
         }
 
-        /* Bannière d'ambiance immersive */
+        /* Bannière d'ambiance immersive avec fond de secours */
         .hero-banner {
             width: 100%;
             height: 180px;
@@ -50,6 +50,7 @@
             object-fit: cover;
             margin-bottom: 25px;
             border: 1px solid var(--border-color);
+            background-color: var(--bg-sand);
         }
 
         .step-hidden {
@@ -73,6 +74,7 @@
             object-fit: cover;
             border: 2px solid var(--accent);
             flex-shrink: 0;
+            background-color: var(--bg-sand);
         }
 
         .clinic-info h1 {
@@ -183,7 +185,7 @@
             background: #EFECE6;
         }
 
-        /* Fenêtre Modale (Pop-up) */
+        /* Fenêtre Modale (Pop-up) optimisée */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -214,6 +216,7 @@
             max-height: 75vh;
             object-fit: contain;
             border-radius: 8px;
+            background-color: var(--bg-sand);
         }
 
         .close-modal {
@@ -401,12 +404,12 @@
 <body>
 
     <div class="booking-container">
-        <!-- Bannière d'ambiance immersive -->
-        <img src="ChatGPT Image 25 sept. 2026, 17_25_06.png" alt="Ambiance de la clinique" class="hero-banner">
+        <!-- Bannière d'ambiance immersive optimisée -->
+        <img src="ChatGPT Image 25 sept. 2026, 17_25_06.png" alt="Ambiance de la clinique" class="hero-banner" loading="eager" decoding="async">
 
         <!-- En-tête -->
         <div class="clinic-header">
-            <img src="stessy.png" alt="Stessy DESIR" class="clinic-avatar">
+            <img src="stessy.png" alt="Stessy DESIR" class="clinic-avatar" loading="lazy" decoding="async">
             <div class="clinic-info">
                 <h1>Stessy DESIR Massothérapie</h1>
                 <p>Beloeil & Saint-Hyacinthe, QC</p>
@@ -621,11 +624,11 @@
         </div>
     </div>
 
-    <!-- Fenêtre Modale pour la Carte des Soins -->
+    <!-- Fenêtre Modale pour la Carte des Soins (chargement différé) -->
     <div id="cardModal" class="modal-overlay" onclick="closeModal(event)">
         <div class="modal-content">
             <button class="close-modal" onclick="closeModalDirect()">&times;</button>
-            <img src="massage therapeutique.jpg" alt="Carte des soins et tarifs">
+            <img src="massage therapeutique.jpg" alt="Carte des soins et tarifs" loading="lazy" decoding="async">
         </div>
     </div>
 
