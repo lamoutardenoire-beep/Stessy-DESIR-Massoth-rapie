@@ -28,7 +28,7 @@
             background-color: var(--bg-sand);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 50px 20px;
+            padding: 40px 20px;
         }
 
         .booking-container {
@@ -39,7 +39,17 @@
             box-shadow: 0 20px 40px rgba(44, 38, 34, 0.06);
             border: 1px solid var(--border-color);
             overflow: hidden;
-            padding: 45px;
+            padding: 40px;
+        }
+
+        /* Bannière d'ambiance immersive (Salle de traitement) */
+        .hero-banner {
+            width: 100%;
+            height: 180px;
+            border-radius: 12px;
+            object-fit: cover;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
         }
 
         .step-hidden {
@@ -51,14 +61,14 @@
             display: flex;
             align-items: center;
             gap: 24px;
-            margin-bottom: 35px;
-            padding-bottom: 30px;
+            margin-bottom: 30px;
+            padding-bottom: 25px;
             border-bottom: 1px solid var(--border-color);
         }
 
         .clinic-avatar {
-            width: 85px;
-            height: 85px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--accent);
@@ -66,7 +76,7 @@
         }
 
         .clinic-info h1 {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 4px;
@@ -150,6 +160,27 @@
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--primary);
+        }
+
+        /* Bouton secondaire pour voir la carte visuelle */
+        .view-menu-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: #F7F5F0;
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: background 0.2s;
+        }
+
+        .view-menu-btn:hover {
+            background: #EFECE6;
         }
 
         /* Formulaires stylisés */
@@ -325,6 +356,9 @@
 <body>
 
     <div class="booking-container">
+        <!-- Bannière d'ambiance immersive -->
+        <img src="salle-traitement.png" alt="Ambiance de la clinique" class="hero-banner">
+
         <!-- En-tête -->
         <div class="clinic-header">
             <img src="stessy.png" alt="Stessy DESIR" class="clinic-avatar">
@@ -428,6 +462,12 @@
         <div id="step-service" class="step-hidden">
             <button class="back-btn" onclick="goToStep0()">← Retour</button>
             <div class="section-title">1. Choisissez votre soin & format</div>
+            
+            <!-- Lien vers la carte de soins visuelle originale -->
+            <a href="carte-soins.jpg" target="_blank" class="view-menu-btn">
+                👁️ Consulter la carte visuelle officielle des soins
+            </a>
+
             <div class="options-list">
                 <div class="interactive-card" onclick="selectService('Massage Thérapeutique')">
                     <div class="card-details">
